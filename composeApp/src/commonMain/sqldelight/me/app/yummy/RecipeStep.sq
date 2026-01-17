@@ -1,0 +1,19 @@
+CREATE TABLE RecipeStep (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    recipeId INTEGER NOT NULL,
+    "order" INTEGER NOT NULL,
+    description TEXT NOT NULL,
+    durationMin INTEGER,
+    image BLOB,
+    FOREIGN KEY(recipeId) REFERENCES Recipe(id)
+);
+
+insertRecipeStep:
+INSERT OR REPLACE INTO RecipeStep(id, recipeId, "order", description, durationMin, image)
+VALUES (?, ?, ?, ?, ?, ?);
+
+getStepsByRecipe:
+SELECT * FROM RecipeStep WHERE recipeId = ? ORDER BY "order";
+
+deleteStepsByRecipe:
+DELETE FROM RecipeStep WHERE recipeId = ?;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#000000</item>
+        <item name="windowSplashScreenIconBackgroundColor">#000000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/main_ic</item>
+        <!-- Theme post splash -->
+        <item name="postSplashScreenTheme">@style/Theme.Material3.Light.NoActionBar</item>
+    </style>
+
+    <style name="Theme.App.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:dialogCornerRadius">25dp</item>
+    </style>
+
+</resources>
