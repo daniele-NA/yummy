@@ -200,7 +200,7 @@ fun DashboardSingleRecipeScreen(id: Long, vm: SingleRecipeViewModel) {
                 // == Steps == //
 
                 Text(
-                    modifier = Modifier.padding(bottom = 10.dp),
+                    modifier = Modifier.padding(vertical = 10.dp),
                     text = "Directions :",
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Start
