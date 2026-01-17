@@ -7,14 +7,9 @@ It showcases recipes with steps, images, and categories. This project is primari
 
 ## Screenshots
 
-### Dashboard
-![Dashboard](ASSETS/dashboard.jpeg)
-
-### Home
-![Home](ASSETS/home.jpeg)
-
-### Single Recipe
-![Single Recipe](ASSETS/single_recipe.jpeg)
+<img src="ASSETS/dashboard.jpeg" alt="Dashboard" width="300"/>
+<img src="ASSETS/home.jpeg" alt="Home" width="300"/>
+<img src="ASSETS/single_recipe.jpeg" alt="Single Recipe" width="300"/>
 
 ## Features
 
