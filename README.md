@@ -5,6 +5,17 @@ It showcases recipes with steps, images, and categories. This project is primari
 
 ---
 
+## Screenshots
+
+### Dashboard
+![Dashboard](ASSETS/dashboard.jpeg)
+
+### Home
+![Home](ASSETS/home.jpeg)
+
+### Single Recipe
+![Single Recipe](ASSETS/single_recipe.jpeg)
+
 ## Features
 
 - Display a list of recipes with images and categories.
