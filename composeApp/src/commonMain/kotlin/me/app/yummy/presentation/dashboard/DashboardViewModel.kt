@@ -55,7 +55,8 @@ class DashboardViewModel(private val prefs: PreferencesRepo, private val dbRepo:
                 previewUrl = "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
                 category = "main-course",
                 requiredTimeMin = 45,
-                preferred = true
+                preferred = true,
+                pastaWithTomatoSauce
             )?.let { recipes += it }
 
             dbRepo.insertRecipe(
@@ -63,7 +64,8 @@ class DashboardViewModel(private val prefs: PreferencesRepo, private val dbRepo:
                 previewUrl = "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg",
                 category = "starter",
                 requiredTimeMin = 30,
-                preferred = false
+                preferred = false,
+                tomatoSoup
             )?.let { recipes += it }
 
             dbRepo.insertRecipe(
@@ -71,7 +73,8 @@ class DashboardViewModel(private val prefs: PreferencesRepo, private val dbRepo:
                 previewUrl = "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
                 category = "main-course",
                 requiredTimeMin = 20,
-                preferred = false
+                preferred = false,
+                stuffedRolls
             )?.let { recipes += it }
 
             dbRepo.insertRecipe(
@@ -79,7 +82,8 @@ class DashboardViewModel(private val prefs: PreferencesRepo, private val dbRepo:
                 previewUrl = "https://www.themealdb.com/images/media/meals/04axct1763793018.jpg",
                 category = "main-course",
                 requiredTimeMin = 50,
-                preferred = false
+                preferred = false,
+                grilledLambSkewers
             )?.let { recipes += it }
 
             dbRepo.insertRecipe(
@@ -87,7 +91,8 @@ class DashboardViewModel(private val prefs: PreferencesRepo, private val dbRepo:
                 previewUrl = "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
                 category = "side-dish",
                 requiredTimeMin = 60,
-                preferred = false
+                preferred = false,
+                bakedPotatoes
             )?.let { recipes += it }
 
         }

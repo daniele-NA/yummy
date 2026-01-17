@@ -35,7 +35,7 @@ fun BaseScreen() {
             AnimatedNavHost(
                 modifier = Modifier.padding(safePadding).fillMaxSize(),
                 navController = navController,
-                startDestination = DashboardNav
+                startDestination = AuthPage
             ) {
                 composable<QuestionnaireNav> {
                     QuestionnaireNavigation(finalize = {

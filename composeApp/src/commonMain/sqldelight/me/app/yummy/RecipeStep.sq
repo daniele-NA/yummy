@@ -4,13 +4,12 @@ CREATE TABLE RecipeStep (
     "order" INTEGER NOT NULL,
     description TEXT NOT NULL,
     durationMin INTEGER,
-    image BLOB,
     FOREIGN KEY(recipeId) REFERENCES Recipe(id)
 );
 
 insertRecipeStep:
-INSERT OR REPLACE INTO RecipeStep(id, recipeId, "order", description, durationMin, image)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO RecipeStep(id, recipeId, "order", description, durationMin)
+VALUES (?, ?, ?, ?, ?);
 
 getStepsByRecipe:
 SELECT * FROM RecipeStep WHERE recipeId = ? ORDER BY "order";

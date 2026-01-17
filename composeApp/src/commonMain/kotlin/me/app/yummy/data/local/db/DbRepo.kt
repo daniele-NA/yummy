@@ -8,11 +8,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import me.app.yummy.YummyDb
 import me.app.yummy.Recipe
+import me.app.yummy.RecipeStep
 import me.app.yummy.core.nativeSystemTimeMillis
+
+// == WE DO NOT NEED ALL THE PARAMS OF 'RecipeStep' == //
+data class StepEntry(
+    public val description: String,
+    public val durationMin: Long?,
+)
 
 class DbRepo(private val db: YummyDb) {
 
     private val recipeQueries = db.recipeQueries
+    private val recipeStepQueries = db.recipeStepQueries
 
     // Missing url check consistency etc etc //
     suspend fun insertRecipe(
@@ -20,7 +28,8 @@ class DbRepo(private val db: YummyDb) {
         previewUrl: String,
         category: String,
         requiredTimeMin: Long,
-        preferred: Boolean
+        preferred: Boolean,
+        stepEntries: List<StepEntry>
     ): Recipe? = withContext(Dispatchers.IO) {
         db.transactionWithResult {
             recipeQueries.insertRecipe(
@@ -33,17 +42,39 @@ class DbRepo(private val db: YummyDb) {
                 preferred = if (preferred) 1 else 0
             )
 
-            recipeQueries.getLastInsertedRecipe().executeAsOneOrNull()
+            val recipeInserted = recipeQueries.getLastInsertedRecipe().executeAsOneOrNull()
+
+            // == AFTER WE SURE THAT THE RECIPE IS VALID,WE ADD STEPS == //
+            recipeInserted?.let { safeRecipeInserted->
+                stepEntries.forEachIndexed { index,step ->
+                    recipeStepQueries.insertRecipeStep(
+                        id = null,
+                        recipeId = safeRecipeInserted.id,
+
+                        // WE REFERENCE THE recipeInserted //
+                        order = index.toLong(),
+                        description = step.description,
+                        durationMin = step.durationMin
+                    )
+                }
+            }
+
+
+            recipeInserted
         }
+    }
+
+    suspend fun getStepsByRecipeId(id: Long): List<RecipeStep> = withContext(Dispatchers.IO) {
+        return@withContext recipeStepQueries.getStepsByRecipe(id).executeAsList()
     }
 
     suspend fun getRecipeById(id: Long): Recipe? = withContext(Dispatchers.IO) {
         recipeQueries.getRecipeById(id).executeAsOneOrNull()
     }
 
-    suspend fun updateRecipePreferredStateById(id: Long, newPreferred: Long)=
+    suspend fun updateRecipePreferredStateById(id: Long, newPreferred: Long) =
         withContext(Dispatchers.IO) {
-            recipeQueries.updateRecipePreferredById(id= id, preferred = newPreferred)
+            recipeQueries.updateRecipePreferredById(id = id, preferred = newPreferred)
         }
 
     // fixme

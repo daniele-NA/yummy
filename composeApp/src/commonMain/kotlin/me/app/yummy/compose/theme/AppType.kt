@@ -26,18 +26,6 @@ fun getTypography(materialColorScheme: ColorScheme): Typography {
             lineHeight = lineHeight
         ),
 
-        titleMedium = TextStyle(
-            fontFamily = FontFamily(title), fontSize = h2,
-            letterSpacing = letterSpacing,
-            lineHeight = lineHeight
-        ),
-
-        titleSmall = TextStyle(
-            fontFamily = FontFamily(title), fontSize = h3,
-            letterSpacing = letterSpacing,
-            lineHeight = lineHeight
-        ),
-
         bodyLarge = TextStyle(
             fontFamily = FontFamily(body), fontSize = h3,
             letterSpacing = letterSpacing,
