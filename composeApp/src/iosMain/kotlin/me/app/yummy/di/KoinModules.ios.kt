@@ -34,4 +34,4 @@ actual inline fun <reified T : ViewModel> providePlatformViewModel(
     return getKoin().get<T>()
 }
 
-actual fun provideDb(): YummyDb = YummyDb(NativeSqliteDriver(YummyDb.Schema, DATABASE_NAME))
+actual fun provideDb() = YummyDb(NativeSqliteDriver(YummyDb.Schema, DATABASE_NAME))
