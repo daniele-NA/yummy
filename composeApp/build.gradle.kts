@@ -13,6 +13,8 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(17)
+
     sqldelight {
         databases {
             // == IT GENERATES A KOTLIN-CLASS WITH THIS NAME == //
