@@ -38,6 +38,9 @@ kotlin {
             baseName = "YummyIos"
             isStatic = true
             freeCompilerArgs += listOf("-Xbinary=bundleId=${rootProject.extra["package"] as String}")
+
+            // == USED FOR SQL_DELIGHT == //
+            linkerOpts("-lsqlite3")
         }
     }
 
